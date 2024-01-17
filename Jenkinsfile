@@ -4,15 +4,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                script{
+                    for(int i=0; i<10; i++){
+                        echo "Script ke-${i}"
+                    }
+                }
                 echo 'Start Build'
-                sh('./mvnw clean compile test-compile')
+                #sh('./mvnw clean compile test-compile')
+                Powershell(". '.\mvnw.cmd'")
                 echo 'Finish Build'
             }
         }
         stage('Test') {
             steps {
                 echo 'Start Test'
-                sh('./mvnw test')
                 echo 'Finish Test'
             }
         }
