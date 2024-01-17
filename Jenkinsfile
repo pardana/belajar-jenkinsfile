@@ -8,6 +8,13 @@ pipeline {
         disableConcurrentBuilds()
         timeout(time: 10, unit: 'MINUTES')
     }
+    parameters{
+        string(name: 'NAME', defaultValue: 'Guest', description: 'What is your name?')
+        text(name: 'DESCRIPTION', defaultValue: '', description: 'Tell me about you!?')
+        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Need to deploy?')
+        choice(name: 'SOCIAL_MEDIA', choices: ['Instagram','Facebook','Twitter'], description: 'Which sosial media?')
+        password(name: 'SECRET', defaultValue: '', description: 'Encrypt Key?')
+    }
 
     stages {
         stage('Prepare') {
@@ -25,6 +32,15 @@ pipeline {
                    echo("APP User: ${APP_USR}")
                    sh('echo "App Password : $APP_PSW" > "rahasia.txt"')
                 }
+            }
+        }
+        stage('Parameter') {
+            steps {
+                echo "Hello: ${params.NAME}"
+                echo "Description: ${params.DESCRIPTION}"
+                echo "Deploy: ${params.DEPLOY}"
+                echo "Sosial Media: ${params.SOSIAL_MEDIA}"
+                echo "Secret: ${params.SECRET}"
             }
         }
         stage('Build') {
