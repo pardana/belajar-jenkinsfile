@@ -8,10 +8,11 @@ pipeline {
                     for(int i=0; i<10; i++){
                         echo "Script ke-${i}"
                     }
+                    // Gunakan backtick (`) sebagai karakter escape dalam PowerShell
+                    powershell(". '.\\mvnw.cmd'")
                 }
                 echo 'Start Build'
                 /*sh('./mvnw clean compile test-compile')*/
-                Powershell(". '.\mvnw.cmd'")
                 echo 'Finish Build'
             }
         }
