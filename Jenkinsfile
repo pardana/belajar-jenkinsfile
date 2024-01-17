@@ -5,8 +5,8 @@ pipeline {
         WEB = "https://appardana.com"
     }
     options{
-        .disableConcurrentBuilds()
-        .timeout(time: 10, unit: 'SECONDS')
+        disableConcurrentBuilds()
+        timeout(time: 10, unit: 'SECONDS')
     }
 
     stages {
