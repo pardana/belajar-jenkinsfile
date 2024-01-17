@@ -4,6 +4,10 @@ pipeline {
         AUTHOR = "Aditria Pardana"
         WEB = "https://appardana.com"
     }
+    options{
+        .disableConcurrentBuilds()
+        .timeout(time: 10, unit: 'SECONDS')
+    }
 
     stages {
         stage('Prepare') {
