@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    environtment{
+    environment{
         AUTHOR = "Aditria Pardana"
         WEB = "https://appardana.com"
     }
