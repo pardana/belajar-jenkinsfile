@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environtment{
+        AUTHOR = "Aditria Pardana"
+        WEB = "https://appardana.com"
+    }
 
     stages {
         stage('Prepare') {
@@ -8,6 +12,8 @@ pipeline {
                    echo("Start Job : ${env.JOB_NAME}")
                    echo("Start Build : ${env.BUILD_NUMBER}")
                    echo("Branch Name: ${env.BRANCH_NAME}")
+                   echo("Author: ${AUTHOR}")
+                   echo("Web: ${WEB}")
                 }
             }
         }
