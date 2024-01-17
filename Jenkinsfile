@@ -10,7 +10,7 @@ pipeline {
                     }
                 }
                 echo 'Start Build'
-                #sh('./mvnw clean compile test-compile')
+                /*sh('./mvnw clean compile test-compile')*/
                 Powershell(". '.\mvnw.cmd'")
                 echo 'Finish Build'
             }
