@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Prepare') {
             environment{
-                APP = credetials("aditria_rahasia")
+                APP = credentials("aditria_rahasia")
             }
             
             steps {
