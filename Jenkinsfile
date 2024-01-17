@@ -9,7 +9,7 @@ pipeline {
                         echo "Script ke-${i}"
                     }
                     // Gunakan backtick (`) sebagai karakter escape dalam PowerShell
-                    powershell(". '.\\mvnw.cmd'")
+                    //powershell(". '.\\mvnw.cmd'")
                 }
                 echo 'Start Build'
                 /*sh('./mvnw clean compile test-compile')*/
