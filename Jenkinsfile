@@ -39,7 +39,7 @@ pipeline {
                 echo "Hello: ${params.NAME}"
                 echo "Description: ${params.DESCRIPTION}"
                 echo "Deploy: ${params.DEPLOY}"
-                echo "Sosial Media: ${params.SOSIAL_MEDIA}"
+                echo "Sosial Media: ${params.SOCIAL_MEDIA}"
                 echo "Secret: ${params.SECRET}"
             }
         }
