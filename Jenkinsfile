@@ -7,6 +7,10 @@ pipeline {
 
     stages {
         stage('Prepare') {
+            environment{
+                APP = credetials("aditria_rahasia")
+            }
+            
             steps {
                 script{
                    echo("Start Job : ${env.JOB_NAME}")
@@ -14,6 +18,8 @@ pipeline {
                    echo("Branch Name: ${env.BRANCH_NAME}")
                    echo("Author: ${AUTHOR}")
                    echo("Web: ${WEB}")
+                   echo("APP User: ${APP_USR}")
+                   echo("APP Password: ${APP_PSW}")
                 }
             }
         }
