@@ -107,7 +107,7 @@ pipeline {
                 }
             }
             steps {
-                echo "Deploy to ${params.TARGET_ENV}"
+                echo("Deploy to ${TARGET_ENV}")
             }
         }
 
