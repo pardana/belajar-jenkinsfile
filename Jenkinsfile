@@ -23,7 +23,24 @@ pipeline {
     //}
 
     stages {
-        stage('Prepare') {
+        stage('Preparation'){
+            parallel{
+                stage('Prepare Java'){
+                    steps{
+                        echo("Prepare Java")
+                        sleep(5)
+                    }
+                }
+                 stage('Prepare Maven'){
+                    steps{
+                        echo("Prepare Maven")
+                        sleep(5)
+                    }
+                }
+            }
+        }
+        
+        stage('Prepare ENV') {
             environment{
                 APP = credentials("aditria_rahasia")
             }
@@ -90,7 +107,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Deploy to ${TARGET_ENV}'
+                echo "Deploy to ${params.TARGET_ENV}"
             }
         }
 
