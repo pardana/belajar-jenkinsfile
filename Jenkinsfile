@@ -77,10 +77,16 @@ pipeline {
             }
         }
         stage('Deploy') {
+            input{
+                message "Can we deploy?"
+                ok "Yes, of course?"
+                submitter "appardana"
+                parameters{
+                    choice(name: "TARGET_ENV", choices: ["DEV", "PROD"], description: "Which environtment?")
+                }
+            }
             steps {
-                echo 'Hello Deploy1'
-                echo 'Hello Deploy2'
-                echo 'Hello Deploy3'
+                echo 'Deploy to ${TARGET_ENV}'
             }
         }
     }
