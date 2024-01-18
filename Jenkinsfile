@@ -16,6 +16,12 @@ pipeline {
         password(name: 'SECRET', defaultValue: '', description: 'Encrypt Key?')
     }
 
+    triggers{
+        //cron("*/1 * * * *")
+        pollSCM("*/1 * * * *")
+        //upstream("upstreamProjects: 'job1,job2', treshold: hudson.model.Result.SUCCESS")
+    }
+
     stages {
         stage('Prepare') {
             environment{
