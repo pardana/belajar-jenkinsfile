@@ -16,11 +16,11 @@ pipeline {
         password(name: 'SECRET', defaultValue: '', description: 'Encrypt Key?')
     }
 
-    triggers{
+    //triggers{
         //cron("*/1 * * * *")
-        pollSCM("*/1 * * * *")
+        //pollSCM("*/1 * * * *")
         //upstream("upstreamProjects: 'job1,job2', treshold: hudson.model.Result.SUCCESS")
-    }
+    //}
 
     stages {
         stage('Prepare') {
@@ -40,6 +40,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Parameter') {
             steps {
                 echo "Hello: ${params.NAME}"
@@ -49,6 +50,7 @@ pipeline {
                 echo "Secret: ${params.SECRET}"
             }
         }
+        
         stage('Build') {
             steps {
                 script{
@@ -63,6 +65,7 @@ pipeline {
                 echo 'Finish Build'
             }
         }
+        
         stage('Test') {
             steps {
                 script{
@@ -76,6 +79,7 @@ pipeline {
                 echo 'Finish Test'
             }
         }
+        
         stage('Deploy') {
             input{
                 message "Can we deploy?"
@@ -87,6 +91,17 @@ pipeline {
             }
             steps {
                 echo 'Deploy to ${TARGET_ENV}'
+            }
+        }
+
+        stage('Release') {
+           when{
+                expression{
+                    return params.DEPLOY
+                }
+           }
+            steps {
+                echo 'Release it'
             }
         }
     }
